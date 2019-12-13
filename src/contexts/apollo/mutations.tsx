@@ -1,10 +1,23 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
-export const EXCHANGE_RATES = gql`
-  {
-    rates(currency: "USD") {
-      currency
-      rate
+export const SIGN_UP = gql`
+  mutation($email: String!, $password: String!, $name: String!) {
+    signUp(email: $email, password: $password, name: $name) {
+      token
+      user {
+        id
+      }
+    }
+  }
+`;
+
+export const SIGN_IN = gql`
+  mutation($email: String!, $password: String!) {
+    signIn(email: $email, password: $password) {
+      token
+      user {
+        id
+      }
     }
   }
 `;
