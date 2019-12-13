@@ -12,7 +12,12 @@ export default () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+    <Menu
+      onClick={handleClick}
+      selectedKeys={[current]}
+      mode="horizontal"
+      className="navbar"
+    >
       <Menu.Item key="mail">
         <Icon type="mail" />
         Navigation One
