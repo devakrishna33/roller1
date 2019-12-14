@@ -9,6 +9,7 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import Project from "./components/Project";
+import NewProject from "./components/NewProject";
 import { withAuthUserProvider } from "./contexts/session";
 
 export default withAuthUserProvider(
@@ -21,6 +22,7 @@ export default withAuthUserProvider(
           <Route path={ROUTES.SIGN_IN} component={SignIn} />
           <Route path={ROUTES.SIGN_UP} component={SignUp} />
           <Route path={ROUTES.PROJECT} component={Project} />
+          <Route path={ROUTES.NEW_PROJECT} component={NewProject} />
         </Switch>
       </Router>
     </div>

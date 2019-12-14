@@ -17,6 +17,7 @@ export default () => {
       selectedKeys={[current]}
       mode="horizontal"
       className="navbar"
+      theme="dark"
     >
       <Menu.Item key="mail">
         <Icon type="mail" />

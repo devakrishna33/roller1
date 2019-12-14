@@ -15,7 +15,7 @@ export default (Component: ComponentClass | StatelessComponent) => (
     queryData?.me ||
     JSON.parse(localStorage.getItem("authUser") || "{}");
 
-  console.log(authUser);
+  console.log(queryData);
 
   return (
     <AuthUserContext.Provider

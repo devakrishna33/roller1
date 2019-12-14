@@ -5,6 +5,7 @@ import { createUploadLink } from "apollo-upload-client";
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const authToken = localStorage.getItem("authToken");
+  console.log(authToken);
   if (authToken) {
     operation.setContext({
       headers: {

@@ -21,3 +21,11 @@ export const SIGN_IN = gql`
     }
   }
 `;
+
+export const CREATE_PROJECT = gql`
+  mutation($name: String!) {
+    createProject(name: $name) {
+      id
+    }
+  }
+`;
