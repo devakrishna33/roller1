@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { AuthUserObject } from "../../interfaces/AuthUser";
+import { AuthUserObject } from "../../interfaces";
 
 const AuthUserContext = createContext<AuthUserObject | null>(null);
 

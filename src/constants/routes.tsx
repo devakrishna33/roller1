@@ -3,5 +3,6 @@ export enum ROUTES {
   SIGN_UP = "/signUp",
   HOME = "/",
   PROJECT = "/project",
-  NEW_PROJECT = "/newProject"
+  NEW_PROJECT = "/newProject",
+  ALL_PROJECTS = "/allProjects"
 }

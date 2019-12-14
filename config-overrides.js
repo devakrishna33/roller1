@@ -1,5 +1,4 @@
 const rewireReactHotLoader = require("react-app-rewire-hot-loader");
-const rewireLess = require("react-app-rewire-less");
 const { addLessLoader } = require("customize-cra");
 
 module.exports = function override(config, env) {

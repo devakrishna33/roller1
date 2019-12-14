@@ -9,3 +9,18 @@ export const ME_QUERY = gql`
     }
   }
 `;
+
+export const ALL_PROJECTS = gql`
+  {
+    me {
+      id
+      projects {
+        name
+        id
+        description
+        thumbnail
+        updatedAt
+      }
+    }
+  }
+`;

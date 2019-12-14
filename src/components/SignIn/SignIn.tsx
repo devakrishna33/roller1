@@ -32,6 +32,7 @@ export default withAuthorization(
     };
 
     useEffect(() => {
+      console.log(error);
       if (data?.signIn?.token) {
         localStorage.setItem("authToken", data.signIn.token);
         localStorage.setItem("authUser", JSON.stringify(data.signIn.user));
