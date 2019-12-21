@@ -3,8 +3,9 @@ import { useMutation } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import { CREATE_PROJECT } from "../../contexts/apollo/mutations";
 import { Layout, Typography, Input } from "antd";
-import SideNav from "../SideNav";
+import Navigation from "../Navigation";
 import { ROUTES } from "../../constants";
+import { NewProjectForm } from "./";
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -22,8 +23,6 @@ export default () => {
     });
   };
 
-  console.log(error);
-
   useEffect(() => {
     if (data?.createProject?.id) {
       push(ROUTES.PROJECT);
@@ -32,24 +31,40 @@ export default () => {
 
   return (
     <div>
-      <Layout>
-        <SideNav />
-        <Layout style={{ margin: "auto", maxWidth: "50%" }}>
+      <Layout
+        style={{
+          width: "100vw",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Navigation />
+        <Layout
+          style={{
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minWidth: "100%"
+          }}
+        >
           <Content
             style={{
               background: "#fff",
               padding: 24,
-              margin: 0
+              margin: 0,
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column"
             }}
           >
             <Title>New Project</Title>
-            <Search
-              placeholder="Project Title"
-              enterButton="Create"
-              loading={loading}
-              size="large"
-              onSearch={handleClick}
-            />
+            <NewProjectForm />
           </Content>
         </Layout>
       </Layout>

@@ -6,10 +6,37 @@ export interface AuthUserObject {
 
 export interface Project {
   id: string;
-  name?: string;
+  title?: string;
   description?: string;
   author?: AuthUserObject;
-  thumbnail?: string;
+  photo?: string;
   updatedAt?: string;
   createdAt?: string;
+}
+
+export interface Coordinate {
+  lng: number;
+  lat: number;
+}
+
+export interface Annotation {
+  id: string;
+  author: AuthUserObject;
+  project?: Project;
+  name: string;
+  groups?: Annotation[];
+  parent?: Annotation;
+  isLeaf: boolean;
+  points?: Point[];
+}
+
+export interface Point {
+  id: string;
+  name: string;
+  parent?: Annotation;
+  project: Project;
+  coordinte: Coordinate;
+  color: string;
+  size: number;
+  description?: string;
 }

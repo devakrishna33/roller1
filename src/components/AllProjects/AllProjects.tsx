@@ -11,11 +11,13 @@ import {
   message
 } from "antd";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useHistory } from "react-router-dom";
 import moment from "moment";
 import { Project } from "../../interfaces";
 import { ALL_PROJECTS } from "../../contexts/apollo/queries";
 import { DELETE_PROJECT } from "../../contexts/apollo/mutations";
-import SideNav from "../SideNav";
+import Navigation from "../Navigation";
+import { ROUTES } from "../../constants";
 import { EditProject } from "./";
 
 const { Content } = Layout;
@@ -34,7 +36,10 @@ export default () => {
       }
     ]
   });
-  console.log(moment(data?.projects?.[0]?.updatedAt).format("Do MMM YYYY"));
+  const { push } = useHistory();
+
+  console.log(data);
+
   const [editId, setEditId] = useState("");
 
   useEffect(() => {
@@ -50,8 +55,11 @@ export default () => {
   }, [deleteLoading]);
 
   return (
-    <Layout>
-      <SideNav />
+    <Layout style={{ backgroundColor: "white" }}>
+      <Navigation />
+      <Title style={{ textAlign: "center", marginTop: "20px" }}>
+        All Projects
+      </Title>
       <Layout style={{ margin: "auto", maxWidth: "80%" }}>
         <Content
           style={{
@@ -60,20 +68,19 @@ export default () => {
             margin: 0
           }}
         >
-          <Title>All Projects</Title>
           {loading ? (
             <Spin size="large" />
           ) : (
             <Row>
-              {data?.me?.projects?.map(
-                ({ name, description, thumbnail, id, updatedAt }: Project) => (
+              {data?.projects?.map(
+                ({ title, description, photo, id, updatedAt }: Project) => (
                   <Col span={8}>
                     <EditProject
                       open={editId == id}
                       handleClose={setEditId}
-                      name={name}
+                      title={title}
                       description={description}
-                      thumbnail={thumbnail}
+                      photo={photo}
                       id={id}
                     />
                     <Card
@@ -82,13 +89,18 @@ export default () => {
                         <img
                           alt="example"
                           src={
-                            thumbnail ||
-                            "https://www.sketchappsources.com/resources/source-image/detailed-world-map.png"
+                            photo ||
+                            "https://images.unsplash.com/photo-1576834755541-e09aba3fff6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80"
                           }
                         />
                       }
                       actions={[
-                        <Icon type="setting" key="setting" />,
+                        <Icon
+                          type="folder-open"
+                          onClick={() => {
+                            push(`${ROUTES.PROJECT}?id=${id}`);
+                          }}
+                        />,
                         <Icon
                           type="edit"
                           key="edit"
@@ -119,7 +131,7 @@ export default () => {
                         </Popconfirm>
                       ]}
                     >
-                      <Meta title={name} description={description} />
+                      <Meta title={title} description={description} />
                       <br />
                       {moment(updatedAt).format("Do MMM YYYY")}
                     </Card>

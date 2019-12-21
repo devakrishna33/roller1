@@ -9,12 +9,13 @@ export default (Component: ComponentClass | StatelessComponent) => (
 ) => {
   const { data: queryData } = useQuery(ME_QUERY);
   const { data: subscriptionData } = useSubscription(ME_SUBSCRIPTION);
-  const userJson = localStorage.getItem("authUser") || "";
-  const authUser =
-    subscriptionData?.me || queryData?.me || userJson
-      ? JSON.parse(userJson)
-      : null;
-
+  // const userJson = localStorage.getItem("authUser") || "";
+  // console.log(userJson);
+  // const authUser =
+  //   subscriptionData?.me || queryData?.me || userJson
+  //     ? JSON.parse(userJson)
+  //     : null;
+  const authUser = null;
   return (
     <AuthUserContext.Provider value={authUser}>
       <Component {...props} />

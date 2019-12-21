@@ -14,7 +14,7 @@ interface Props extends Project {
 interface EditProps extends FormComponentProps, Project {}
 
 const EditForm = Form.create<EditProps>()(
-  ({ form, name, thumbnail, description, id }: EditProps) => {
+  ({ form, title, photo, description, id }: EditProps) => {
     const { getFieldDecorator } = form;
     const [editProject, { loading, error }] = useMutation(EDIT_PROJECT, {
       refetchQueries: [
@@ -51,10 +51,10 @@ const EditForm = Form.create<EditProps>()(
         style={{ maxWidth: "300px", margin: "auto" }}
       >
         <Form.Item>
-          {getFieldDecorator("name", {
-            rules: [{ required: true, message: "Please input a name!" }],
-            initialValue: name
-          })(<Input placeholder="Name" size="large" />)}
+          {getFieldDecorator("title", {
+            rules: [{ required: true, message: "Please input a title!" }],
+            initialValue: title
+          })(<Input placeholder="Title" size="large" />)}
         </Form.Item>
         <Form.Item>
           {getFieldDecorator("description", {
@@ -62,9 +62,9 @@ const EditForm = Form.create<EditProps>()(
           })(<Input size="large" placeholder="Description" />)}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator("thumbnail", {
-            initialValue: thumbnail
-          })(<Input size="large" placeholder="Thumbnail URL" />)}
+          {getFieldDecorator("photo", {
+            initialValue: photo
+          })(<Input size="large" placeholder="Photo " />)}
         </Form.Item>
         <Form.Item>
           <Button

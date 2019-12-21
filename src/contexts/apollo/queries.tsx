@@ -12,14 +12,58 @@ export const ME_QUERY = gql`
 
 export const ALL_PROJECTS = gql`
   {
-    me {
+    projects {
+      title
       id
-      projects {
+      description
+      photo
+    }
+  }
+`;
+
+export const GET_PROJECT = gql`
+  query($id: String!) {
+    getProject(id: $id) {
+      id
+      annotations {
         name
         id
+        isLeaf
+      }
+      points {
+        id
+        name
+        color
         description
-        thumbnail
-        updatedAt
+        coordinate {
+          lng
+          lat
+        }
+        size
+      }
+    }
+  }
+`;
+
+export const GET_ANNOTATION = gql`
+  query($id: String!) {
+    getAnnotation(id: $id) {
+      id
+      name
+      parent {
+        id
+      }
+      isLeaf
+      points {
+        id
+        name
+        color
+        description
+        coordinate {
+          lng
+          lat
+        }
+        size
       }
     }
   }
