@@ -12,6 +12,7 @@ export interface Project {
   photo?: string;
   updatedAt?: string;
   createdAt?: string;
+  status?: string;
 }
 
 export interface Coordinate {

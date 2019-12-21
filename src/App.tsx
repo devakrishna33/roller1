@@ -9,6 +9,8 @@ import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import NewProject from "./components/NewProject";
 import AllProjects from "./components/AllProjects";
+import HeatMap from "./components/HeatMap";
+import Trending from "./components/Trending";
 import { withAuthUserProvider } from "./contexts/session";
 
 export default withAuthUserProvider(
@@ -21,6 +23,8 @@ export default withAuthUserProvider(
           <Route path={ROUTES.SIGN_UP} component={SignUp} />
           <Route path={ROUTES.NEW_PROJECT} component={NewProject} />
           <Route path={ROUTES.ALL_PROJECTS} component={AllProjects} />
+          <Route path={ROUTES.HEAT_MAP} component={HeatMap} />
+          <Route path={ROUTES.TRENDING} component={Trending} />
         </Switch>
       </Router>
     </div>

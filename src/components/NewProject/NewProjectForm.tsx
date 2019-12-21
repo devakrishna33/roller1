@@ -32,8 +32,8 @@ const RegistrationForm = ({ form }) => {
           createProject({
             variables: {
               ...rest,
-              lat: JSON.stringify(lat),
-              lng: JSON.stringify(lng)
+              lat,
+              lng
             }
           });
         }

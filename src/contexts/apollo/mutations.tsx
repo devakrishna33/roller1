@@ -27,8 +27,8 @@ export const CREATE_PROJECT = gql`
     $title: String!
     $description: String!
     $photo: String!
-    $lng: String!
-    $lat: String!
+    $lng: Float!
+    $lat: Float!
   ) {
     createProject(
       data: {
@@ -91,6 +91,14 @@ export const CREATE_POINT = gql`
         lat
       }
       size
+    }
+  }
+`;
+
+export const MARK_PROJECT_COMPLETED = gql`
+  mutation($id: String!) {
+    markComplete(id: $id) {
+      id
     }
   }
 `;

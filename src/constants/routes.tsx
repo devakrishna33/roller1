@@ -4,5 +4,7 @@ export enum ROUTES {
   HOME = "/",
   PROJECT = "/project",
   NEW_PROJECT = "/newProject",
-  ALL_PROJECTS = "/allProjects"
+  ALL_PROJECTS = "/allProjects",
+  HEAT_MAP = "/heatMap",
+  TRENDING = "/trending"
 }

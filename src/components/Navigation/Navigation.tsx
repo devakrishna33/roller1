@@ -30,10 +30,13 @@ export default () => {
         <Icon type="database" />
         All Projects
       </Menu.Item>
-      <Menu.Item key="alipay">
-        <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-          Navigation Four - Link
-        </a>
+      <Menu.Item key="alert" onClick={() => push(ROUTES.TRENDING)}>
+        <Icon type="alert" />
+        Trending
+      </Menu.Item>
+      <Menu.Item key="fire" onClick={() => push(ROUTES.HEAT_MAP)}>
+        <Icon type="fire" />
+        Heat Map
       </Menu.Item>
     </Menu>
   );

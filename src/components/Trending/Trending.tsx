@@ -15,7 +15,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 import { Project } from "../../interfaces";
-import { ALL_PROJECTS } from "../../contexts/apollo/queries";
+import { TRENDING_PROJECTS, ALL_PROJECTS } from "../../contexts/apollo/queries";
 import {
   DELETE_PROJECT,
   MARK_PROJECT_COMPLETED
@@ -29,17 +29,7 @@ const { Title } = Typography;
 const { Meta } = Card;
 
 export default () => {
-  const { data, loading } = useQuery(ALL_PROJECTS);
-  const [
-    deleteProject,
-    { loading: deleteLoading, data: deleteData }
-  ] = useMutation(DELETE_PROJECT, {
-    refetchQueries: [
-      {
-        query: ALL_PROJECTS
-      }
-    ]
-  });
+  const { data, loading } = useQuery(TRENDING_PROJECTS);
   const [
     markComplete,
     { loading: markCompleteLoading, data: markCompleteData }
@@ -53,18 +43,6 @@ export default () => {
   const { push } = useHistory();
 
   const [editId, setEditId] = useState("");
-
-  useEffect(() => {
-    if (deleteLoading) {
-      message.loading({ content: "Action in progress...", key: "delete" });
-    } else if (deleteData) {
-      message.success({
-        content: "Deleted Successfully...",
-        key: "delete",
-        duration: 2
-      });
-    }
-  }, [deleteLoading]);
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
@@ -120,29 +98,6 @@ export default () => {
                           key="edit"
                           onClick={() => setEditId(id)}
                         />,
-                        <Popconfirm
-                          placement="top"
-                          title={"Are you sure to delete this project?"}
-                          onConfirm={() => {
-                            deleteProject({
-                              variables: {
-                                id
-                              }
-                            });
-                          }}
-                          okType="danger"
-                          okText="Yes"
-                          cancelText="No"
-                          icon={
-                            <Icon
-                              type="delete"
-                              twoToneColor="red"
-                              theme="twoTone"
-                            />
-                          }
-                        >
-                          <Icon type="delete" onClick={() => {}} />
-                        </Popconfirm>,
                         <Popconfirm
                           placement="top"
                           title={"This will mark this project as complete?"}

@@ -17,54 +17,34 @@ export const ALL_PROJECTS = gql`
       id
       description
       photo
+      updatedAt
+      status
     }
   }
 `;
 
-export const GET_PROJECT = gql`
-  query($id: String!) {
-    getProject(id: $id) {
+export const TRENDING_PROJECTS = gql`
+  {
+    projects {
+      title
       id
-      annotations {
-        name
-        id
-        isLeaf
-      }
-      points {
-        id
-        name
-        color
-        description
-        coordinate {
-          lng
-          lat
-        }
-        size
-      }
+      description
+      photo
+      updatedAt
+      status
     }
   }
 `;
 
-export const GET_ANNOTATION = gql`
-  query($id: String!) {
-    getAnnotation(id: $id) {
+export const GET_LOCATIONS = gql`
+  {
+    getLocations {
       id
-      name
-      parent {
-        id
+      location {
+        lat
+        lng
       }
-      isLeaf
-      points {
-        id
-        name
-        color
-        description
-        coordinate {
-          lng
-          lat
-        }
-        size
-      }
+      numberOfSerious
     }
   }
 `;
